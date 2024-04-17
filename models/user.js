@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 
 mongoose.set('strictQuery', false)
 
-const url = process.env.MONGODB_URI
+// const url = process.env.MONGODB_URI
+const url = 'mongodb+srv://kaganakcelikschool:password-ftodo@cluster0.yuu5jhp.mongodb.net/todoApp?retryWrites=true&w=majority&appName=Cluster0'
 
 console.log('connecting to', url)
 
