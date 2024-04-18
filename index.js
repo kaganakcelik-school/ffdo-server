@@ -10,34 +10,34 @@ const morgan = require('morgan')
 morgan.token('pusho', function (req, res) { return JSON.stringify(req.body)})
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms :pusho'))
 
-let users = [
-	{
-		id: 1,
-		username: 'kagan',
-		password: 'akcelik',
-		notes: [
-			{
-				id: 1,
-				content: 'this is an important note for kagan'
-			},
-			{
-				id: 2,
-				content: 'this is another kagan note frfr'
-			}
-		]
-	},
-	{
-		id: 2,
-		username: 'user',
-		password: 'pass',
-		notes: [
-			{
-				id: 1,
-				content: 'this is an important note for user'
-			}
-		]
-	},
-]
+// let users = [
+// 	{
+// 		id: 1,
+// 		username: 'kagan',
+// 		password: 'akcelik',
+// 		notes: [
+// 			{
+// 				id: 1,
+// 				content: 'this is an important note for kagan'
+// 			},
+// 			{
+// 				id: 2,
+// 				content: 'this is another kagan note frfr'
+// 			}
+// 		]
+// 	},
+// 	{
+// 		id: 2,
+// 		username: 'user',
+// 		password: 'pass',
+// 		notes: [
+// 			{
+// 				id: 1,
+// 				content: 'this is an important note for user'
+// 			}
+// 		]
+// 	},
+// ]
 
 app.use(express.json())
 
@@ -52,6 +52,8 @@ app.get('/', (request, response) => {
 app.get('/api/users', (request, response) => {
 	// response.json(users)
 	User.find({}).then(users => {
+		// console.log(users[0].notes)
+		// console.log(users[0].notes)
 		response.json(users)
 	})
 })

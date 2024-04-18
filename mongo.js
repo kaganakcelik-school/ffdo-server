@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema(
 		notes: [
 			{
 				content: String,
+				done: Boolean,
 			}
 		]
 	}
