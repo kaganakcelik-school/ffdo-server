@@ -135,7 +135,6 @@ app.put('/api/users/:user/:id', (request, response) => {
 
 	const note = {
 		content: body.content,
-		id: body.id || id,
 		done: body.done,
 	}
 
@@ -144,9 +143,10 @@ app.put('/api/users/:user/:id', (request, response) => {
 		result[0].notes = result[0].notes.map(n => n.id === id ? note : n)
 		// console.log(result[0].notes.map(n => n.id === id ? note : n))
 		result[0].save()
+		response.json(result)
 	})
 
-	response.status(204).end()
+	// response.status(204).end()
 })
 
 app.post('/api/users', (request, response) => {
