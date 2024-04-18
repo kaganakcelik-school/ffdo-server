@@ -135,6 +135,7 @@ app.put('/api/users/:user/:id', (request, response) => {
 
 	const note = {
 		content: body.content,
+		id: body.id || id,
 		done: body.done,
 	}
 
