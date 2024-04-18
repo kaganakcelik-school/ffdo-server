@@ -125,6 +125,27 @@ app.delete('/api/users/:user/:id', (request, response) => {
 	response.status(204).end()
 })
 
+app.put('/api/users/:user/:id', (request, response) => {
+	const id = request.params.id
+	const username = request.params.user
+	
+	const body = request.body
+
+	const note = {
+		content: body.content,
+		done: body.done,
+	}
+
+	User.find({username: username}).then(result => {
+		// console.log(result[0].notes.find(n => n.id === id))
+		result[0].notes = result[0].notes.map(n => n.id === id ? note : n)
+		// console.log(result[0].notes.map(n => n.id === id ? note : n))
+		result[0].save()
+	})
+
+	response.status(204).end()
+})
+
 app.post('/api/users', (request, response) => {
 	const body = request.body
 
