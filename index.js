@@ -84,11 +84,13 @@ app.post('/api/users/:user', (request, response) => {
 	
 	const note = {
 		content: body.content,
+		done: false,
 	}
 
 	User.find({username: username}).then(result => {
 		result[0].notes.push(note)
 		result[0].save().then(result => {
+			console.log(result)
 			response.json(result)
 		})
 	})
