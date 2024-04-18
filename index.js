@@ -134,14 +134,15 @@ app.put('/api/users/:user/:id', (request, response) => {
 	const body = request.body
 
 	const note = {
-		content: body.content,
-		done: body.done,
+		content: body.content || 'bob',
+		done: body.done || 'loah',
 	}
 
 	User.find({username: username}).then(result => {
 		// console.log(result[0].notes.find(n => n.id === id))
-		result[0].notes = result[0].notes.map(n => n.id === id ? note : n)
+		result[0].notes = result[0].notes.map(n => n.id === id ? {content: (body.content || n.content), done: ((body.done !== null) ? body.done : n.done)} : n)
 		// console.log(result[0].notes.map(n => n.id === id ? note : n))
+
 		result[0].save()
 		response.json(result)
 	})
