@@ -49,7 +49,7 @@ app.get('/', (request, response) => {
 	response.send('<h1>todo 0.1 backserver</h1>')
 })
 
-app.get('/api/users', (request, response) => {
+app.get('/api1/users', (request, response) => {
 	// response.json(users)
 	User.find({}).then(users => {
 		// console.log(users[0].notes)
@@ -58,7 +58,7 @@ app.get('/api/users', (request, response) => {
 	})
 })
 
-app.get('/api/users/:user', (request, response) => {
+app.get('/api1/users/:user', (request, response) => {
 	const username = request.params.user
 	// const user = users.find(u => u.username === username)
 
@@ -73,7 +73,7 @@ app.get('/api/users/:user', (request, response) => {
 	// }
 })
 
-app.post('/api/users/:user', (request, response) => {
+app.post('/api1/users/:user', (request, response) => {
 	const body = request.body
 
 	if (!body.content) {
@@ -111,7 +111,7 @@ app.post('/api/users/:user', (request, response) => {
 	// response.json(note)
 })
 
-app.delete('/api/users/:user/:id', (request, response) => {
+app.delete('/api1/users/:user/:id', (request, response) => {
 	const id = (request.params.id)
 	const username = request.params.user
 	
@@ -127,7 +127,7 @@ app.delete('/api/users/:user/:id', (request, response) => {
 	response.status(204).end()
 })
 
-app.put('/api/users/:user/:id', (request, response) => {
+app.put('/api1/users/:user/:id', (request, response) => {
 	const id = request.params.id
 	const username = request.params.user
 	
@@ -150,7 +150,7 @@ app.put('/api/users/:user/:id', (request, response) => {
 	// response.status(204).end()
 })
 
-app.post('/api/users', (request, response) => {
+app.post('/api1/users', (request, response) => {
 	const body = request.body
 
 	if (!body.username || !body.password) {
